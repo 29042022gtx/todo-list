@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: 'production',
   entry: './src/index.js',
   output: {
     filename: 'main.js',
@@ -27,10 +28,16 @@ module.exports = {
       },
     ],
   },
-  devtool: 'inline-source-map',
+  // devtool: 'inline-source-map',
   devServer: {
     static: './dist',
-    watchFiles: ['./src/*.html'],
+    watchFiles: [
+      './src/*.html',
+      // './webpack.config.js'
+    ],
+    client: {
+      logging: 'warn',
+    },
   },
   // optimization: {
   //   runtimeChunk: 'single',
