@@ -1,0 +1,45 @@
+:root {
+  --max: 900px;
+  --cloud: #eee;
+  --smoke: #ddd;
+  --bone: #ccc;
+  --gray: #aaa;
+  --dark: #444;
+  --blue: #1180ff;
+  --lightblue: #89c0ff;
+  --red: #ff3434;
+  --lightred: #ff6868;
+  --green: #00c220;
+}
+
+* {
+  transition: all .4s;
+}
+
+svg {
+  width: 1em;
+}
+
+svg path {
+  fill: currentColor;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+.title {
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+}

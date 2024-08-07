@@ -10,8 +10,16 @@ class Project {
     return this.#name
   }
 
+  get notes() {
+    return this.#notes
+  }
+
+  removeItem(idx) {
+    this.#notes.splice(idx, 1)
+  }
+
   prepend(item) {
-    this.#notes.shift(item)
+    this.#notes.unshift(item)
   }
 
   getLastNote() {
