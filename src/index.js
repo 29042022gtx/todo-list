@@ -38,7 +38,54 @@ const projects = (function() {
     return {existed, add, removeItem, search, getItems}
 })()
 
+const listener = (function() {
+  const projectsDiv = document.querySelector('.projects')
+  const noteDialog = document.querySelector('dialog')
+  const noteForm = noteDialog.querySelector('form')
+  noteDialog.showModal()
+  const addBtn = document.querySelector('#add-btn')
+  const submitBtn = document.querySelector('#submit')
+  setAddBtnIdx(0)
 
+  submitBtn.addEventListener('click', function() {
+    const dataIdx = addBtn.getAttribute('data-idx')
+    const project = projects.getItems()[dataIdx]
+
+    const title = noteForm.title.value
+    const description = noteForm.description.value
+    const dueDate = noteForm.dueDate.value
+    const priority = noteForm.priority.value
+
+    const note = new Todo(title, description, dueDate, priority)
+    console.log(note);
+    noteForm.reset()
+    project.prepend(note)
+    pushNotes(dataIdx)
+  })
+
+  addBtn.addEventListener('click', function() {
+    noteDialog.showModal()
+  })
+
+  projectsDiv.addEventListener('click', function(e) {
+    const dataIdx = e.target.getAttribute('data-idx')
+    if (dataIdx == null)
+      return
+    pushNotes(dataIdx)
+
+  })
+
+  function setAddBtnIdx(idx) {
+    addBtn.setAttribute('data-idx', idx)
+  }
+
+  function pushNotes(dataIdx) {
+    display.clearNotes()
+    display.pushNotes(projects.getItems()[dataIdx].notes)
+    setAddBtnIdx(dataIdx)
+  }
+
+})()
 
 const project1 = new Project('Study')
 const project2 = new Project('Hang out')

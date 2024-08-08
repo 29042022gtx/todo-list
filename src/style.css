@@ -131,6 +131,7 @@ header .menu-btn:hover {
 }
 
 .notes .title {
+  height: 1em;
   font-size: 1.2em;
   font-weight: bold;
   /* text-align: center; */
@@ -140,6 +141,7 @@ header .menu-btn:hover {
 }
 
 .notes .due-date {
+  height: 1em;
   width: 100%;
   line-height: 1.2em;
   overflow: hidden;
@@ -161,4 +163,63 @@ header .menu-btn:hover {
 
 .priority3 {
   background-color: var(--priority3);
+}
+
+.note-dialog {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+}
+
+.note-dialog * {
+  font-family: inherit;
+  font-size: 100%;
+  border: none;
+}
+
+.note-dialog form > * {
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+}
+
+.note-dialog *:focus {
+  outline: none;
+}
+
+.note-dialog form {
+  padding: 0;
+}
+
+.note-dialog #title {
+  padding: 4px 2px;
+  font-weight: bold;
+}
+
+.note-dialog textarea {
+  width: 16em;
+  line-height: 1.2em;
+  height: 12em;
+  padding: 4px 2px;
+  transition: all .1s;
+  resize: vertical;
+  resize: none;
+}
+
+.note-dialog .wrp {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.note-dialog #submit  {
+  width: fit-content;
+  /* margin-left: auto; */
+  margin-left: 4px;
+  padding: 4px 8px;
+  outline: 1px solid transparent;
+}
+
+.note-dialog #submit:focus {
+  outline-color: black;
 }
