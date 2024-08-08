@@ -1,3 +1,5 @@
+import {format } from 'date-fns'
+
 class Todo {
   constructor(title, description, dueDate, priority, project) {
     this.title = '' + title
@@ -6,6 +8,10 @@ class Todo {
     this.priority = +priority
     this.project = '' + project
     this.completed = false
+  }
+  
+  getFormattedDate(s) {
+    return format(this.dueDate, s)
   }
 
   isCompleted = () => {

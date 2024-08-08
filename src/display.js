@@ -17,7 +17,7 @@ const display = (function() {
 
       const dueDate = document.createElement('div')
       dueDate.classList.add('due-date')
-      dueDate.textContent = notes[i].dueDate
+      dueDate.textContent = notes[i].getFormattedDate('dd/MM')
 
       const btnWrp = document.createElement('div')
       btnWrp.classList.add('btn-wrp')

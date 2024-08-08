@@ -29,6 +29,9 @@ module.exports = {
     ],
   },
   // devtool: 'inline-source-map',
+  // optimization: {
+  //   runtimeChunk: 'single',
+  // },
   devServer: {
     static: './dist',
     watchFiles: [
@@ -40,7 +43,4 @@ module.exports = {
       logging: 'warn',
     },
   },
-  // optimization: {
-  //   runtimeChunk: 'single',
-  // },
 };
