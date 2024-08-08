@@ -33,6 +33,7 @@ module.exports = {
     static: './dist',
     watchFiles: [
       './src/*.html',
+      './**/*.css'
       // './webpack.config.js'
     ],
     client: {

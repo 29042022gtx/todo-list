@@ -21,6 +21,8 @@ class Todo {
   }
 
   setPriority(priority) {
+    if (priority < 1 || priority > 3)
+      priority = 3
     this.priority = +priority
   }
 
