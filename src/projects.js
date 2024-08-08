@@ -1,29 +1,25 @@
 class Project {
-  #name = ''
-  #notes = []
+  name = ''
+  notes = []
 
   constructor(name) {
-    this.#name = '' + name
+    this.name = '' + name
   }
 
-  get name() {
-    return this.#name
-  }
+  set notes(val) {
 
-  get notes() {
-    return this.#notes
   }
 
   removeItem(idx) {
-    this.#notes.splice(idx, 1)
+    this.notes.splice(idx, 1)
   }
 
   prepend(item) {
-    this.#notes.unshift(item)
+    this.notes.unshift(item)
   }
 
   getLastNote() {
-    return this.#notes[0]
+    return this.notes[0]
   }
 
   changeName(name) {
@@ -31,7 +27,7 @@ class Project {
   }
 
   replace(idx, note) {
-    this.#notes.splice(idx, 1, note)
+    this.notes.splice(idx, 1, note)
   }
   
 }

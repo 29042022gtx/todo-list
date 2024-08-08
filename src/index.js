@@ -4,10 +4,10 @@ import Todo from './todo.js'
 import display from './display.js'
 
 const projects = (function() {
-    const items = []
+    let items = []
 
     function getItems() {
-      return items
+      return this.items
     }
   
     function existed(name) {
@@ -35,7 +35,12 @@ const projects = (function() {
       return null
     }
 
-    return {existed, add, removeItem, search, getItems}
+    function storeData() {
+      const data = JSON.stringify(projects.items)
+      localStorage.setItem('data', data)
+    }
+
+    return {existed, add, removeItem, search, getItems, storeData, items}
 })()
 
 const listener = (function() {
@@ -114,21 +119,32 @@ const listener = (function() {
     display.clearNotes()
     display.pushNotes(projects.getItems()[dataIdx].notes)
     setAddBtnIdx(dataIdx)
+    projects.storeData()
   }
 
 })()
 
-const project1 = new Project('Study')
-const project2 = new Project('Hang out')
-projects.add(project1)
-projects.add(project2)
-const note1 = new Todo('Python', 'loving', '2000-5-20', 2)
-const note2 = new Todo('JavaScript', 'loving', '2000-2-15', 1)
-const note3 = new Todo('Nation Park', 'loving', '2000-6-2', 3)
-projects.getItems()[0].prepend(note1)
-projects.getItems()[0].prepend(note2)
-projects.getItems()[1].prepend(note3)
-
+if (localStorage.length == 0) {
+  const project1 = new Project('Study')
+  const project2 = new Project('Hang out')
+  projects.add(project1)
+  projects.add(project2)
+  const note1 = new Todo('Python', 'loving', '2000-5-20', 2)
+  const note2 = new Todo('JavaScript', 'loving', '2000-2-15', 1)
+  const note3 = new Todo('Nation Park', 'loving', '2000-6-2', 3)
+  projects.getItems()[0].prepend(note1)
+  projects.getItems()[0].prepend(note2)
+  projects.getItems()[1].prepend(note3)
+  projects.storeData()
+} else {
+  const storage = localStorage.getItem('data')
+  const data = JSON.parse(storage)
+  for (let i = 0; i < data.length; i++) {
+    Object.setPrototypeOf(data[i], Project.prototype)
+    for (let j = 0; j < data[i].notes.length; j++)
+      Object.setPrototypeOf(data[i].notes[j], Todo.prototype)
+  }
+  projects.items = data
+}
 display.pushProjects(projects.getItems())
 display.pushNotes(projects.getItems()[0].notes)
-
